@@ -4,7 +4,7 @@ The following example explains how to configure OpenCV 4.3.0 on Windows 10, usin
 
 ## Installation 
 
-(Windows + OpenCV 4.3.0 + VS2019 + CMake 3.17.3)
+(Windows + OpenCV 4.3.0 + VS2019 + CMake 3.17.3), in this example, VS2019 professional was used, but it should be very similar for other versions
 
 1. Install [Visual Studio](https://visualstudio.microsoft.com/vs/older-downloads/), select Desktop development with C++
 2. Install [CMake](https://cmake.org/download/)
