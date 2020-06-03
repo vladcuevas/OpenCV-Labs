@@ -1,3 +1,0 @@
-F:/GitHub/OpenCV-Labs/GrayImage/build/CMakeFiles/sampleCode.dir
-F:/GitHub/OpenCV-Labs/GrayImage/build/CMakeFiles/ALL_BUILD.dir
-F:/GitHub/OpenCV-Labs/GrayImage/build/CMakeFiles/ZERO_CHECK.dir

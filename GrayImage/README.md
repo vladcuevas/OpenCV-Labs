@@ -8,7 +8,7 @@ Excelent example to test OpenCV.
 - Windows 10
 - OpenCV 4.3.0
 - PoweShell 7
-- Visual Studio 2019 or Community 2019 
+- Visual Studio 2019 or Community 2019
 - CMake 3.17.3
 
 ## How to run:
