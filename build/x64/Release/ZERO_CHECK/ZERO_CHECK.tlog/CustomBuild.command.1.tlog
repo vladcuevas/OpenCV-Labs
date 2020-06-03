@@ -1,0 +1,10 @@
+^G:\GITHUB\OPENCV-LABS\BUILD\CMAKEFILES\EDA6AF47F3BF4FC0BE57C6AFE7FB3CA7\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SG:/GitHub/OpenCV-Labs -BG:/GitHub/OpenCV-Labs/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file G:/GitHub/OpenCV-Labs/build/myProject.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
