@@ -1,0 +1,10 @@
+^F:\GITHUB\OPENCV-LABS\GRAYIMAGE\BUILD\CMAKEFILES\7199B042815E9FE77D2FCFFA1400445B\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SF:/GitHub/OpenCV-Labs/GrayImage -BF:/GitHub/OpenCV-Labs/GrayImage/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file F:/GitHub/OpenCV-Labs/GrayImage/build/sampleCode.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
