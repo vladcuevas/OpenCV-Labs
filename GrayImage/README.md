@@ -13,7 +13,7 @@ Excelent example to test OpenCV.
 
 ## How to run:
 
-1. Execute compile.bat
-2. Execute run.bat
+1. Execute compile.ps1
+2. Execute run.ps1 <image_filename.jpg> or full path
 
 Checkout the output.

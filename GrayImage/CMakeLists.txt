@@ -33,4 +33,4 @@ MACRO(add_example name)
   TARGET_LINK_LIBRARIES(${name} ${OpenCV_LIBS} )
 ENDMACRO()
 
-add_example(sampleCode)
+add_example(grayImage)
