@@ -1,0 +1,1 @@
+.\build\Release\image.exe
