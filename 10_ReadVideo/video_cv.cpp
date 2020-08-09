@@ -16,7 +16,7 @@
 using namespace cv;
 using namespace std;
 
-void video_cv::displayVideoFromPath(string videoPath, int delay)
+VideoCapture video_cv::displayVideoFromPath(string videoPath, bool isDisplay, int delay)
 {
   VideoCapture cap(videoPath);
 
@@ -25,23 +25,33 @@ void video_cv::displayVideoFromPath(string videoPath, int delay)
       cout << "Error opening video stream or file" << endl;
   }
 
-  // Read until video is completed
-  while(cap.isOpened()){
+  if (isDisplay == true) {
 
-      Mat frame;
+    // Read until video is completed
+    while(cap.isOpened()){
 
-      // Capture frame-by-frame
-      cap >> frame;
+        Mat frame;
 
-      // If the frame is empty, break immediately
-      if (frame.empty())
-        break;
+        // Capture frame-by-frame
+        cap >> frame;
 
-      // Write the frame into the file 'outputChaplin.mp4'
-      imshow("Frame", frame);
+        // If the frame is empty, break immediately
+        if (frame.empty())
+          break;
 
-      // Wait for 25 ms before moving on to the next frame
-      // This will slow down the video 
-      waitKey(25);
+        // Write the frame into the file 'outputChaplin.mp4'
+        imshow("Frame", frame);
+
+        // Wait for 25 ms before moving on to the next frame
+        // This will slow down the video 
+        waitKey(25);
+    }
+
+    destroyAllWindows();
+
   }
+
+  VideoCapture cap2(videoPath);
+
+  return cap2;
 }

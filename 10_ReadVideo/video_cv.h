@@ -16,6 +16,6 @@ using namespace std;
 class video_cv {
 public:
 
-  void displayVideoFromPath(string videoPath, int delay = 25);
+  VideoCapture video_cv::displayVideoFromPath(string videoPath, bool isDisplay=true, int delay=25);
 
 };
