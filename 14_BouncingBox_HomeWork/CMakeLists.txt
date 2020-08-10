@@ -48,14 +48,7 @@ ENDMACRO()
 MACRO(pack name)
   add_exec(${name})
   TARGET_LINK_LIBRARIES(${name}
-                        commons
-                        image_cv
-                        video_cv
                         ${OpenCV_LIBS} )
 ENDMACRO()
-
-add_lib(commons)
-add_lib(image_cv)
-add_lib(video_cv)
 
 pack(bouncingBox)

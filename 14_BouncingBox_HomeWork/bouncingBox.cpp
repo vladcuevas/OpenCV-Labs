@@ -16,6 +16,7 @@ using namespace cv;
 using namespace std;
 
 Point point1, point2;
+Range range1, range2;
 // Source image
 Mat source;
 
@@ -42,7 +43,17 @@ void drawBouncingBox(int action, int x, int y, int flags, void *userdata)
     {
         point2 = Point(x, y);
 
-        Mat croppedImage = source(Range(point1.y, point2.y), Range(point1.x, point2.x));
+        if (point2.y > point1.y)
+          range1 = Range(point1.y, point2.y);
+        else
+          range1 = Range(point2.y, point1.y);
+
+        if (point2.x > point1.x)
+          range2 = Range(point1.x, point2.x);
+        else
+          range2 = Range(point2.x, point1.x);
+
+        Mat croppedImage = source(range1, range2);
         imwrite(DATA_PATH+"/images/sample_cropped.jpg", croppedImage);
 
         rectangle(source, point1, point2, Scalar(255, 255, 0), 2, LINE_AA);
