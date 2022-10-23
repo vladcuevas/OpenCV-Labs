@@ -38,13 +38,13 @@ Mat ycbImage;
 cvtColor(bgr, ycbImage, COLOR_BGR2YCrCb);
 split(ycbImage,channels);
 
-imshow("Blue Channel", channels[0]);
+imshow("Y Channel", channels[0]);
 waitKey(0);
 
-imshow("Gren Channel", channels[1]);
+imshow("Cr Channel", channels[1]);
 waitKey(0);
 
-imshow("Red Channel", channels[2]);
+imshow("Cb Channel", channels[2]);
 waitKey(0);
 
 return 0;

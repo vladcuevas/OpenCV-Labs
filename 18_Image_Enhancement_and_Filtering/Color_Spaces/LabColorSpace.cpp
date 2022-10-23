@@ -13,23 +13,23 @@ using namespace cv;
 int main(){
 // Read image
 Mat bgr = imread(DATA_PATH + "images/capsicum.jpg");
+vector<Mat> channels;
 
 imshow("Image",bgr);
 waitKey(0);
 
-Mat hsvImage;
-cvtColor(bgr, hsvImage, COLOR_BGR2HSV);
+Mat labImage;
+cvtColor(bgr, labImage, COLOR_BGR2Lab);
 
-Mat hsvChannels[3];
-split(hsvImage,hsvChannels);
+split(labImage,channels);
 
-imshow("Hue", hsvChannels[0]);
+imshow("L Channel", channels[0]);
 waitKey(0);
 
-imshow("Saturation", hsvChannels[1]);
+imshow("A Channel", channels[1]);
 waitKey(0);
 
-imshow("Value", hsvChannels[2]);
+imshow("B Channel", channels[2]);
 waitKey(0);
 
 return 0;
