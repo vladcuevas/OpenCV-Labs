@@ -40,6 +40,7 @@ MACRO(add_example name)
 ENDMACRO()
 
 add_example(RGBColorSpace)
+add_example(HSVColorSpace)
 # add_example(02_erosionDilation)
 # add_example(03_implementationOfMorphologicalOperations)
 # add_example(04_openingClosing)
