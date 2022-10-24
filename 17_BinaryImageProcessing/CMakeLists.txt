@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 
 PROJECT(Mathematical_Operations_on_Images)
-SET(CMAKE_CXX_STANDARD 11)
+SET(CMAKE_CXX_STANDARD 20)
 
 #SET(OpenCV_DIR /home/hp/workfolder/OpenCV-Installation/installation/OpenCV-master/lib/cmake/opencv4)
 
@@ -19,9 +19,6 @@ SET(CMAKE_CXX_STANDARD 11)
 ### WINDOWS : C:\Users\yourname\Documents\opencv-3.3.1\build\install
 
 ##############################################################
-
-
-
 
 ###################   ***DO NOT EDIT***  #####################
 

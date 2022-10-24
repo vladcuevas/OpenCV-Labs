@@ -7,14 +7,17 @@
 using namespace std;
 using namespace cv;
 
-void thresholdingUsingForLoop(Mat src, Mat dst, int thresh, int maxValue) {
+void thresholdingUsingForLoop(Mat src, Mat dst, int thresh, int maxValue)
+{
     int height = src.size().height;
     int width = src.size().width;
 
     // Loop over rows
-    for (int i=0; i < height; i++) {
+    for (int i = 0; i < height; i++)
+    {
         // Loop over columns
-        for (int j=0; j < width; j++) {
+        for (int j = 0; j < width; j++)
+        {
             if (src.at<uchar>(i, j) > thresh)
                 dst.at<uchar>(i, j) = maxValue;
             else
@@ -23,8 +26,8 @@ void thresholdingUsingForLoop(Mat src, Mat dst, int thresh, int maxValue) {
     }
 }
 
-
-int main() {
+int main()
+{
     // Read an image in grayscale
     string imagePath = DATA_PATH + "images/threshold.png";
     Mat src = imread(imagePath, IMREAD_GRAYSCALE);
@@ -41,7 +44,7 @@ int main() {
 
     t = clock();
     thresholdingUsingForLoop(src, dst, thresh, maxValue);
-    t = clock()-t;
+    t = clock() - t;
     cpu_time_used = ((double)t) / CLOCKS_PER_SEC;
     cout << "Time taken with Manual Algorithm = " << cpu_time_used << endl;
 
@@ -50,7 +53,7 @@ int main() {
 
     t = clock();
     threshold(src, dst, thresh, maxValue, THRESH_BINARY);
-    t = clock()-t;
+    t = clock() - t;
     cpu_time_used = ((double)t) / CLOCKS_PER_SEC;
     cout << "Time taken = " << cpu_time_used << endl;
 
@@ -62,10 +65,11 @@ int main() {
     double time_loops = 0;
     double n_samples = 10.0;
 
-    for (int i=0; i < (int)n_samples; i++) {
+    for (int i = 0; i < (int)n_samples; i++)
+    {
         t = clock();
         thresholdingUsingForLoop(src, dst, thresh, maxValue);
-        t = clock()-t;
+        t = clock() - t;
         t_loop += t;
 
         t = clock();
@@ -74,8 +78,8 @@ int main() {
         t_opencv += t;
     }
 
-    time_opencv = t_opencv/(n_samples*CLOCKS_PER_SEC);
-    time_loops = t_loop/(n_samples*CLOCKS_PER_SEC);
+    time_opencv = t_opencv / (n_samples * CLOCKS_PER_SEC);
+    time_loops = t_loop / (n_samples * CLOCKS_PER_SEC);
 
     cout << "Average time taken by For Loop Code = " << time_loops << " seconds" << endl;
     cout << "Average time taken by OpenCV Code = " << time_opencv << " seconds" << endl;

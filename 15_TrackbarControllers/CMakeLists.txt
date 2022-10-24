@@ -1,6 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12)
 
 PROJECT(opencv)
+SET(CMAKE_CXX_STANDARD 20)
 
 ######################## EDIT IF REQUIRED ####################
 ###Uncomment the line below and specify the path to OpenCV directory i.e. the path to the OpenCVConfig.cmake file. Check the examples given below.

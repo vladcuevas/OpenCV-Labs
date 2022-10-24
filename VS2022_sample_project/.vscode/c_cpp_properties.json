@@ -3,7 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "G:/opencv-4.6.0/Installation/include"
             ],
             "defines": [
                 "_DEBUG",
