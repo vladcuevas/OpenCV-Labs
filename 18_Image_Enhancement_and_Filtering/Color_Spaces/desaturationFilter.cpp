@@ -6,9 +6,14 @@
 #include <opencv2/imgproc.hpp>
 #include <time.h>
 #include "dataPath.hpp"
+#include <filesystem>
+#include <string>
+#include <format>
 
 using namespace std;
 using namespace cv;
+
+namespace fs = std::filesystem;
 
 std::vector<std::string> tokenize(string s, string del = ",")
 {
@@ -74,8 +79,15 @@ int main(int argc, char *argv[])
     waitKey(0);
 
     if (argc > 1) {
-        std::vector<std::string> tokens = tokenize(img_path, ".");
-        std::string newPath = tokens[0] + "_gray." + tokens[1];
+        fs::path fs_path = fs::path{img_path};
+        fs::path parentStem = fs_path.parent_path()/fs_path.stem();
+        
+        std:string newPath = std::format(
+            "{}_gray{}", 
+            parentStem.generic_string(),
+            fs_path.extension().generic_string()
+        );
+
         cout << newPath << endl;
         imwrite(newPath, imSat);
     }
