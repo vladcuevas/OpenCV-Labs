@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     // or 1 (to run showing the images)
     // by default it will show the images, because this is an example
 
-    std::string img_path = fs::current_path().generic_string() + DATA_PATH + "images/girl.jpg";
+    std::string img_path = fs::current_path().generic_string() + DATA_PATH + "images/dark-flowers.jpg";
 
     int isImShow = 1;
     fs::path fs_path = fs::path{img_path};
@@ -48,64 +48,35 @@ int main(int argc, char *argv[])
 
     if (fs::exists(fs_path)) {
         // Read image
-        Mat img = imread(img_path);
+        Mat img = imread(img_path, IMREAD_GRAYSCALE);
 
         if (isImShow == 1) {
             imshow("Original Image", img);
             waitKey(0);
         }
 
-        // Specify scaling factor
-        float saturationScale = 0.01f;
-
-        // Convert to HSV color space
-        Mat hsvImage;
-        cv::cvtColor(img, hsvImage, COLOR_BGR2HSV);
-
-        // Convert to float32
-        hsvImage.convertTo(hsvImage, CV_32F);
-
-        vector<Mat> channels(3);
-
-        // Split the channels
-        split(hsvImage, channels);
-
-        // Multiply S channel by scaling factor
-        channels[1] = channels[1] * saturationScale;
-
-        // Clipping operation performed to limit pixel values
-        // between 0 and 255
-        min(channels[1], 255, channels[1]);
-        max(channels[1], 0, channels[1]);
-
-        // Merge the channels
-        merge(channels, hsvImage);
-
-        // Convert back from float32
-        hsvImage.convertTo(hsvImage, CV_8UC3);
-
-        Mat imSat;
-        // Convert to BGR color space
-        cv::cvtColor(hsvImage, imSat, COLOR_HSV2BGR);
+        // Equalize histogram
+        Mat imEq;
+        equalizeHist(img,imEq);
         
         if (isImShow == 1) {
-            imshow("Desaturated Image", imSat);
+            imshow("Equalized Image", imEq);
             waitKey(0);
         }
 
         if (argc > 1) {
             std::string newPath = std::format(
-                "{}_gray{}", 
+                "{}_equalized_gray{}", 
                 parentStem.generic_string(),
                 fs_path.extension().generic_string()
             );
 
             cout << newPath << endl;
-            imwrite(newPath, imSat);
+            imwrite(newPath, imEq);
         }
     }
     else {
-        cout << "The provided path is not valid!";
+        cout << "The provided path " << img_path << " is not valid!";
     }
 
     return 0;
