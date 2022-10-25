@@ -34,3 +34,4 @@ videos/
 *.exe
 *.out
 *.app
+*.pdb
