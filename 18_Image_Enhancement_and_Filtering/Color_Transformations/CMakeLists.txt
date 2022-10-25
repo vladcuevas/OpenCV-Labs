@@ -38,3 +38,4 @@ ENDMACRO()
 
 add_example(histogramEqualization)
 add_example(histogramEqualizationColor)
+add_example(histogramEqualizationCLAHE)
