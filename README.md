@@ -125,6 +125,22 @@ To add OpenCV to your `Path`, you'll append the path to the OpenCV binaries to y
 
 1. Replace `$cwd\Installation\x64\vc17\bin` with your actual path. For example, it might be `G:\opencv-4.8.0\Installation\x64\vc17\bin`.
 
+    ```powershell
+    PS G:\opencv-4.8.0\opencv\build> ls $cwd\Installation\x64\vc17\bin
+
+        Directory: G:\opencv-4.8.0\Installation\x64\vc17\bin
+
+    Mode                 LastWriteTime         Length Name
+    ----                 -------------         ------ ----
+    -a---           7/12/2023  7:24 PM       42366464 opencv_annotationd.exe
+    -a---           7/12/2023  7:24 PM       71390208 opencv_interactive-calibrationd.exe
+    -a---           7/12/2023  7:24 PM       63649792 opencv_model_diagnosticsd.exe
+    -a---           7/12/2023  7:32 PM       12262400 opencv_version_win32d.exe
+    -a---           7/12/2023  7:31 PM       12341760 opencv_versiond.exe
+    -a---           7/12/2023  7:17 PM       26353152 opencv_videoio_ffmpeg480_64.dll
+    -a---           7/12/2023  7:32 PM       45720576 opencv_visualisationd.exe
+    ```
+
 2. Append this path to your `Path` environment variable.
 
 ### Set OPENCV_DIR Variable
@@ -258,3 +274,64 @@ Note: The provided PowerShell commands are for Windows systems. If you are using
 ---
 
 In these instructions, `..` in the `cmake -G "Visual Studio 17 2022" -A x64 ..` command represents the parent directory of the current directory. Replace this with the actual path to the source code if necessary.
+
+---
+
+# Using OpenCV with Visual Studio Code
+
+Visual Studio Code is a highly versatile and lightweight code editor that supports a wide variety of languages, including C++. Here's how you can configure it to work with OpenCV.
+
+## Prerequisites
+
+- OpenCV installed on your system.
+- Visual Studio Code installed on your system.
+- The C/C++ extension for Visual Studio Code installed. You can download it from the Visual Studio Marketplace [here](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools).
+
+## Setting up Visual Studio Code for OpenCV
+
+Visual Studio Code uses a file named `c_cpp_properties.json` to configure its C/C++ extension. This file resides in the `.vscode` folder within your workspace. We need to modify this file so that it contains the correct path to the OpenCV headers.
+
+Follow these steps:
+
+1. Open Visual Studio Code.
+2. Open your workspace (or create a new one).
+3. In the workspace directory, create a new folder named `.vscode` if it doesn't already exist.
+4. Inside the `.vscode` folder, create a new file named `c_cpp_properties.json`.
+5. Open `c_cpp_properties.json` and insert the following content:
+
+    ```json
+    {
+        "configurations": [
+            {
+                "name": "Win32",
+                "includePath": [
+                    "${workspaceFolder}/**",
+                    "C:/path/to/opencv/build/include"
+                ],
+                "defines": [
+                    "_DEBUG",
+                    "UNICODE",
+                    "_UNICODE"
+                ],
+                "windowsSdkVersion": "10.0.19041.0",
+                "compilerPath": "C:/path/to/compiler",
+                "cStandard": "c17",
+                "cppStandard": "c++17",
+                "intelliSenseMode": "${default}"
+            }
+        ],
+        "version": 4
+    }
+    ```
+
+6. Replace `"C:/path/to/opencv/build/include"` with the path to your OpenCV's `include` directory and replace `"C:/path/to/compiler"` with the path to your C++ compiler.
+    
+    Example: "G:/opencv-4.8.0/Installation/include"
+
+After you make these changes, Visual Studio Code should be able to find the OpenCV headers and you will be ready to start coding with OpenCV in Visual Studio Code.
+
+---
+
+If you're not sure where your OpenCV's `include` directory is, you can find it by searching for the file "core.hpp" in the directory where you installed OpenCV. The path to the directory containing this file is the path you should add to the "includePath" property.
+
+Similarly, if you're unsure of the path to your C++ compiler, you can use the `where` command (Windows) or the `which` command (Linux/Mac) in your terminal to find it. For example, if you're using the GCC compiler, you can run `where gcc` (Windows) or `which gcc` (Linux/Mac) to find its path.
